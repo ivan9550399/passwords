@@ -16,7 +16,6 @@ from cryptography.hazmat.primitives import hashes
 from termcolor import colored
 
 
-
 # Конфигурация приложения: пути, логирование и символы для паролей
 class Config:
     APP_FOLDER = Path(os.getenv("APPDATA", os.path.expanduser("~"))) / "pw_manager"
