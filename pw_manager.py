@@ -251,6 +251,8 @@ class PasswordManager:
                 print(colored("Пароль не может быть пустым.", "red"))
 
     def _show_passwords(self) -> None:
+        assert self.user is not None
+        assert self.encryptor is not None
         # Отображение сохраненных паролей в таблице
         if not self.user.data or len(self.user.data) == 1 and "_test" in self.user.data:
             print("\nПаролей нет.")
@@ -266,6 +268,8 @@ class PasswordManager:
         print(table)
 
     def _save_password(self, site: str, password: str) -> None:
+        assert self.user is not None
+        assert self.encryptor is not None
         # Сохранение пароля с датой создания
         today = date.today().strftime("%d.%m.%Y")
         self.user.data[site] = {
@@ -322,6 +326,7 @@ class PasswordManager:
         return True
 
     def change_master_password(self) -> bool:
+        assert self.user is not None
         # Изменение мастер-пароля с перешифровкой данных
         print(f"\nИзменение мастер-пароля для {self.user.username}")
         while True:
@@ -436,6 +441,8 @@ class PasswordManager:
         return False
 
     def user_menu(self) -> None:
+        assert self.user is not None
+        assert self.encryptor is not None
         # Меню пользователя
         while True:
             print(f"\n=== Меню ({self.user.username}) ===")
